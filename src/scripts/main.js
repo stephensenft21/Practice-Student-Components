@@ -1,5 +1,4 @@
-const students = [
-    {
+const students = [{
         name: "Chris Miller",
         subject: "History",
         info: "Failed last exam",
@@ -73,23 +72,79 @@ const students = [
     }
 ]
 
+const studentContainer = document.querySelector("#container")
+
+// const createStudentComponent = (name, subject, info, status ) => {
+//     return `
+//         <div class="student">
+//             <h1 class="xx-large ${status}">${name}</h1>
+//             <section class="bordered dashed section--padded">${subject}</section>
+//             <aside  class="pushRight">${info}</aside>
+//         </div>
+//     `
+// }
+
+// for (const student of students) {
+//     let studentComponent = ""
+//     if (student.score >= 60) {
+//         studentComponent = createStudentComponent(student.name,student.subject,student.info, "passing")
+//     } else {
+//         studentComponent = createStudentComponent(student.name,student.subject,student.info, "failing" )
+//     }
+//     studentContainer.innerHTML += studentComponent
+// //}
 
 
-const createStudentComponent = (name, subject, info) => {
-    return `
+
+
+
+// One Object to rule them all -
+//before refactoring
+// const createStudentComponent = (name, subject, info, status) => {
+//     return `
+//         <div class="student">
+//             <h1 class="xx-large ${status}">${name}</h1>
+//             <section class="bordered dashed section--padded">${subject}</section>
+//             <aside  class="pushRight">${info}</aside>
+//         </div>
+//     `
+// }
+const createStudentComponent = (obj) => {
+    if (obj.score >= 60) {
+        return `
         <div class="student">
-            <h1>${name}</h1>
-            <section>${subject}</section>
-            <aside>${info}</aside>
+            <h1 class="xx-large passing">${obj.name}</h1>
+            <section class="bordered dashed section--padded">${obj.subject}</section>
+            <aside  class="pushRight">${obj.info}</aside>
+        </div>`
+    } else {
+        return `     
+    <div class="student">
+            <h1 class="xx-large failing">${obj.name}</h1>
+            <section class="bordered dashed section--padded">${obj.subject}</section>
+            <aside  class="pushRight">${obj.info}</aside>
         </div>
     `
-}
-
-for (const student of students) {
-    let studentComponent = ""
-    if (student.score >= 60) {
-        studentComponent = passing
-    } else {
-        studentComponent = non-passing
     }
 }
+
+
+
+/*for (const student of students) {
+    let studentComponent = ""
+    if (student.score >= 60) {
+      // studentComponent = createStudentComponent(student.name, student.subject, student.info, "passing")
+    } else {
+        studentComponent = createStudentComponent(student.name, student.subject, student.info, "failing")
+    }
+    studentContainer.innerHTML += studentComponent
+}*/
+
+// for (const student of students) {
+//     let studentComponent = "";
+//     studentComponent += createStudentComponent(student);
+//     studentContainer.innerHTML += studentComponent;
+  
+// }
+
+
