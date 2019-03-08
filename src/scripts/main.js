@@ -109,24 +109,24 @@ const studentContainer = document.querySelector("#container")
 //         </div>
 //     `
 // }
-const createStudentComponent = (obj) => {
-    if (obj.score >= 60) {
-        return `
-        <div class="student">
-            <h1 class="xx-large passing">${obj.name}</h1>
-            <section class="bordered dashed section--padded">${obj.subject}</section>
-            <aside  class="pushRight">${obj.info}</aside>
-        </div>`
-    } else {
-        return `     
-    <div class="student">
-            <h1 class="xx-large failing">${obj.name}</h1>
-            <section class="bordered dashed section--padded">${obj.subject}</section>
-            <aside  class="pushRight">${obj.info}</aside>
-        </div>
-    `
-    }
-}
+// const createStudentComponent = (obj) => {
+//     if (obj.score >= 60) {
+//         return `
+//         <div class="student">
+//             <h1 class="xx-large passing">${obj.name}</h1>
+//             <section class="bordered dashed section--padded">${obj.subject}</section>
+//             <aside  class="pushRight">${obj.info}</aside>
+//         </div>`
+//     } else {
+//         return `     
+//     <div class="student">
+//             <h1 class="xx-large failing">${obj.name}</h1>
+//             <section class="bordered dashed section--padded">${obj.subject}</section>
+//             <aside  class="pushRight">${obj.info}</aside>
+//         </div>
+//     `
+//     }
+// }
 
 
 
@@ -144,7 +144,60 @@ const createStudentComponent = (obj) => {
 //     let studentComponent = "";
 //     studentComponent += createStudentComponent(student);
 //     studentContainer.innerHTML += studentComponent;
-  
+
 // }
+function h1(name) {
+    return `<h1 class="xx-large failing">${name}</h1>`
+
+}
+
+function section(subject) {
+    return `<section class="bordered dashed section--padded">${subject}</section>`
+
+}
+
+function aside(info) {
+
+    return `<aside class="pushRight">${info}</aside>`
+
+
+}
+
+// const createStudentComponent = (student) => `
+//     <div id="student">
+//         ${h1(student.name)}
+//         ${section(student.subject)}
+//         ${aside(student.info)}
+//     </div>`
+
+
+
+
+
+    function element(type,content,value){
+        return `<${type} class="${value}">${content}</${type}>`
+
+    }
+    
+    const createStudentComponent1 = (student) => `
+    <div id="student">
+    
+        ${element("h1", student.name, "xx-large passing")}
+        ${element("section", student.subject, "bordered dashed section--padded")}
+        ${element("aside", student.info, "pushRight")}
+    </div>
+`
+
+for (const student of students) {
+    let studentComponent = ""
+    if (student.score >= 60) {
+       studentComponent = createStudentComponent1(student)
+    } else {
+        studentComponent = createStudentComponent1(student)
+    }
+    studentContainer.innerHTML += studentComponent
+}
+
+
 
 
